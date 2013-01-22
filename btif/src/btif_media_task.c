@@ -178,11 +178,11 @@ enum {
 #define BTIF_MEDIA_BITRATE_STEP 5
 #endif
 
-/* Middle quality quality setting @ 44.1 khz */
-#define DEFAULT_SBC_BITRATE 328
+/* Middle quality quality setting @ 48 khz */
+#define DEFAULT_SBC_BITRATE 345
 
 #ifndef BTIF_A2DP_NON_EDR_MAX_RATE
-#define BTIF_A2DP_NON_EDR_MAX_RATE 229
+#define BTIF_A2DP_NON_EDR_MAX_RATE 237
 #endif
 
 #ifndef A2DP_MEDIA_TASK_STACK_SIZE
@@ -910,8 +910,8 @@ tBTIF_STATUS btif_a2dp_setup_codec(void)
 
     GKI_disable();
 
-    /* for now hardcode 44.1 khz 16 bit stereo PCM format */
-    media_feeding.cfg.pcm.sampling_freq = 44100;
+    /* for now hardcode 48 khz 16 bit stereo PCM format */
+    media_feeding.cfg.pcm.sampling_freq = 48000;
     media_feeding.cfg.pcm.bit_per_sample = 16;
     media_feeding.cfg.pcm.num_channel = 2;
     media_feeding.format = BTIF_AV_CODEC_PCM;
