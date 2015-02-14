@@ -2811,9 +2811,7 @@ static void btif_get_num_aa_frame(UINT8 *num_of_iterations, UINT8 *num_of_frames
                             {
                                 APPL_TRACE_ERROR("## Audio Congestion (iterations:%d > max (%d))",
                                      noi, MAX_PCM_ITER_NUM_PER_TICK);
-                                noi = 1;
-                                btif_media_cb.media_feeding_state.pcm.counter
-                                    =noi * nof * pcm_bytes_per_frame;
+                                noi = MAX_PCM_ITER_NUM_PER_TICK;
                             }
                             result = nof;
                         }
@@ -2834,8 +2832,6 @@ static void btif_get_num_aa_frame(UINT8 *num_of_iterations, UINT8 *num_of_frames
                         APPL_TRACE_ERROR("## Audio Congestion (frames: %d > max (%d))"
                             ,result, MAX_PCM_FRAME_NUM_PER_TICK);
                         result = MAX_PCM_FRAME_NUM_PER_TICK;
-                        btif_media_cb.media_feeding_state.pcm.counter
-                            = noi * result * pcm_bytes_per_frame;
                     }
                     nof = result;
                 }
